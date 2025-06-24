@@ -14,22 +14,25 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Menutup menu mobile saat klik link
+  const handleMenuClick = () => setMenuOpen(false);
+
   return (
     <nav
-      className={`w-full flex items-stretch justify-between bg-white/95 backdrop-blur-md h-20 fixed top-0 left-0 z-50 transition-all duration-300 ${
+      className={`w-full flex items-center justify-between bg-white  h-16 md:h-20 fixed top-0 left-0 z-50 transition-all duration-300 ${
         scrolled ? "shadow-lg border-b border-gray-200" : ""
       }`}
     >
-      <div className="flex items-center px-8 h-full">
+      <div className="flex items-center px-4 md:px-8 h-full flex-shrink-0">
         <img
           src="/logo.png"
           alt="Logo"
-          className="h-10 w-auto object-contain"
+          className="h-8 md:h-10 w-auto object-contain"
         />
       </div>
       {/* Desktop Nav */}
-      <ul className="hidden md:flex items-center gap-4 text-lg text-gray-700 pr-2">
-        <li className="text-black font-extrabold">Home</li>
+      <ul className="hidden md:flex items-center gap-4 text-base md:text-lg text-gray-700 pr-2">
+        <li className="text-black font-extrabold cursor-pointer">Home</li>
         <li className="mx-2 text-gray-400 text-xl">·</li>
         <li className="hover:text-black cursor-pointer">About</li>
         <li className="mx-2 text-gray-400 text-xl">·</li>
@@ -46,7 +49,7 @@ const Navbar = () => {
       </div>
       {/* Hamburger Button */}
       <button
-        className="md:hidden flex items-center px-4 focus:outline-none"
+        className="md:hidden flex items-center px-4 focus:outline-none ml-auto"
         onClick={() => setMenuOpen((prev) => !prev)}
         aria-label="Toggle menu"
       >
@@ -66,16 +69,41 @@ const Navbar = () => {
       </button>
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="absolute top-full left-0 w-full bg-white/95 backdrop-blur-md shadow-md flex flex-col md:hidden animate-fade-in z-50">
-          <ul className="flex flex-col items-start gap-2 text-lg text-gray-700 px-8 py-4">
-            <li className="text-black font-extrabold py-1">Home</li>
-            <li className="hover:text-black cursor-pointer py-1">About</li>
-            <li className="hover:text-black cursor-pointer py-1">Services</li>
-            <li className="hover:text-black cursor-pointer py-1">Projects</li>
-            <li className="hover:text-black cursor-pointer py-1">Contact</li>
+        <div className="absolute top-full left-0 w-full bg-white/95 backdrop-blur-md shadow-md flex flex-col md:hidden animate-fade-in z-50 border-b">
+          <ul className="flex flex-col items-start gap-1 text-base text-gray-700 px-4 py-3">
+            <li
+              className="text-black font-extrabold py-2 w-full cursor-pointer"
+              onClick={handleMenuClick}
+            >
+              Home
+            </li>
+            <li
+              className="hover:text-black cursor-pointer py-2 w-full"
+              onClick={handleMenuClick}
+            >
+              About
+            </li>
+            <li
+              className="hover:text-black cursor-pointer py-2 w-full"
+              onClick={handleMenuClick}
+            >
+              Services
+            </li>
+            <li
+              className="hover:text-black cursor-pointer py-2 w-full"
+              onClick={handleMenuClick}
+            >
+              Projects
+            </li>
+            <li
+              className="hover:text-black cursor-pointer py-2 w-full"
+              onClick={handleMenuClick}
+            >
+              Contact
+            </li>
           </ul>
-          <div className="bg-slate-800 w-full px-8 py-3 flex items-center">
-            <button className="text-white font-bold text-base w-full text-left">
+          <div className="bg-slate-800 w-full px-4 py-3 flex items-center">
+            <button className="text-white font-bold text-base w-full text-center py-2">
               Request A Quote
             </button>
           </div>

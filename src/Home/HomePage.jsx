@@ -1,8 +1,18 @@
 import React from "react";
+import {
+  Building,
+  HardHat,
+  Landmark,
+  MapPin,
+  Phone as PhoneIcon,
+  PlayCircle,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 
 const HomePage = () => {
   return (
-    <div className="min-h-screen w-full pt-20">
+    <div className="min-h-screen w-full pt-20 overflow-x-hidden">
       {/* Hero Section */}
       <section
         className="relative flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 lg:px-0 pt-8 sm:pt-12 pb-6 sm:pb-8 bg-white overflow-hidden min-h-[500px] sm:min-h-[600px] lg:min-h-[700px]"
@@ -11,6 +21,7 @@ const HomePage = () => {
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
+        data-aos="fade-up"
       >
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/40 z-0" />
@@ -55,9 +66,7 @@ const HomePage = () => {
       <div className="flex justify-center lg:justify-end w-full px-4 sm:px-6 lg:px-0 mt-[-2rem] sm:mt-[-2.5rem] mb-6 sm:mb-8 relative z-20">
         <div className="bg-red-600 text-white shadow-lg flex flex-col sm:flex-row items-center gap-4 sm:gap-6 px-6 sm:px-8 py-4 w-full max-w-sm">
           <div className="flex items-center flex-col gap-2">
-            <span className="material-icons text-xl sm:text-2xl">
-              Location on
-            </span>
+            <Building className="w-8 h-8 text-red-600" />
             <div className="text-center sm:text-left">
               <div className="text-xs">Location</div>
               <div className="font-bold text-sm">Jakarta, Indonesia</div>
@@ -65,7 +74,7 @@ const HomePage = () => {
           </div>
           <div className="w-px h-8 bg-white/30 hidden sm:block"></div>
           <div className="flex gap-2 flex-col items-center sm:items-start">
-            <span className="material-icons text-xl sm:text-2xl">Phone</span>
+            <PhoneIcon className="w-8 h-8 text-red-600" />
             <div className="text-center sm:text-left">
               <div className="text-xs">Phone Number</div>
               <div className="font-bold text-sm">(+62) 21 1234 5678</div>
@@ -75,7 +84,10 @@ const HomePage = () => {
       </div>
 
       {/* Company Video & About Section */}
-      <section className="flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 lg:px-0 py-12 sm:py-16 gap-8 sm:gap-12 bg-white">
+      <section
+        className="flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 lg:px-0 py-12 sm:py-16 gap-8 sm:gap-12 bg-white"
+        data-aos="fade-right"
+      >
         {/* Video */}
         <div className="flex-1 relative flex items-start justify-center pl-4 sm:pl-8 lg:pl-20 order-2 lg:order-1">
           <div className="relative w-full max-w-[320px] sm:max-w-[420px] lg:max-w-[720px] aspect-[4/3] shadow-lg bg-white">
@@ -99,23 +111,7 @@ const HomePage = () => {
             ></div>
             {/* Play Button */}
             <button className="absolute bottom-0 left-0 flex items-center gap-2 sm:gap-3 bg-red-600 text-white px-4 sm:px-7 py-3 sm:py-5 rounded-none rounded-tr-lg shadow-lg">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-5 h-5 sm:w-7 sm:h-7"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <circle
-                  cx="12"
-                  cy="12"
-                  r="11"
-                  stroke="white"
-                  strokeWidth="2"
-                  fill="none"
-                />
-                <polygon points="10,8 16,12 10,16" fill="white" />
-              </svg>
+              <PlayCircle className="w-5 h-5 sm:w-7 sm:h-7" />
               <div className="flex flex-col items-start text-left">
                 <span className="text-xs">Play</span>
                 <span className="font-bold text-sm sm:text-base leading-tight">
@@ -175,6 +171,7 @@ const HomePage = () => {
       <section
         className="w-full flex justify-center mt-30 items-stretch bg-white p-0 m-0 relative"
         style={{ position: "relative" }}
+        data-aos="fade-left"
       >
         <div className="w-full max-w-9xl mx-auto h-[400px] sm:h-[450px] lg:h-[500px] min-h-0 relative lg:ml-[500px]">
           {/* Blue background full width except for left margin */}
@@ -281,7 +278,10 @@ const HomePage = () => {
       </section>
 
       {/* SERVICES SECTION */}
-      <section className="w-full bg-white py-16 px-4 sm:px-8 flex flex-col items-center">
+      <section
+        className="w-full bg-white py-16 px-4 sm:px-8 flex flex-col items-center"
+        data-aos="fade-left"
+      >
         <div className="w-full max-w-6xl mx-auto">
           <div className="flex justify-between items-center mb-2">
             <div className="text-sm text-red-600 font-semibold tracking-widest uppercase">
@@ -289,10 +289,10 @@ const HomePage = () => {
             </div>
             <div className="flex gap-2">
               <button className="w-8 h-8 flex items-center justify-center border border-gray-300 bg-white text-slate-800 hover:bg-gray-100 transition">
-                <span className="material-icons text-base">chevron_left</span>
+                <ChevronLeft className="w-5 h-5" />
               </button>
               <button className="w-8 h-8 flex items-center justify-center border border-gray-300 bg-white text-slate-800 hover:bg-gray-100 transition">
-                <span className="material-icons text-base">chevron_right</span>
+                <ChevronRight className="w-5 h-5" />
               </button>
             </div>
           </div>
@@ -301,7 +301,11 @@ const HomePage = () => {
           </h2>
           <div className="flex flex-col md:flex-row gap-6 md:gap-8 justify-center items-stretch">
             {/* Card 1 */}
-            <div className="flex-1 bg-gray-50 shadow-md p-8 flex flex-col items-start relative border border-gray-100">
+            <div
+              className="flex-1 bg-gray-50 shadow-md p-8 flex flex-col justify-between h-full items-start relative border border-gray-100 min-h-[340px] md:min-h-[400px]"
+              data-aos="fade-right"
+              data-aos-delay="0"
+            >
               {/* Dekorasi sudut kanan atas */}
               <div
                 className="absolute top-0 right-0 w-8 h-3 bg-white"
@@ -311,25 +315,29 @@ const HomePage = () => {
                 className="absolute top-3 right-0 w-4 h-4 bg-gray-50"
                 style={{ zIndex: 2 }}
               ></div>
-              <div className="w-12 h-12 flex items-center justify-center mb-4">
-                <span className="material-icons text-3xl text-red-600">
-                  apartment
-                </span>
+              <div>
+                <div className="w-12 h-12 flex items-center justify-center mb-4">
+                  <Building className="w-12 h-12 text-red-600" />
+                </div>
+                <h3 className="text-xl font-extrabold text-slate-800 mb-2">
+                  Building Construction
+                </h3>
+                <p className="text-gray-500 text-sm mb-4 flex-1">
+                  We specialize in constructing high-quality buildings for
+                  commercial, residential, and industrial purposes with a focus
+                  on safety and durability.
+                </p>
               </div>
-              <h3 className="text-xl font-extrabold text-slate-800 mb-2">
-                Building Construction
-              </h3>
-              <p className="text-gray-500 text-sm mb-6">
-                We specialize in constructing high-quality buildings for
-                commercial, residential, and industrial purposes with a focus on
-                safety and durability.
-              </p>
-              <button className="mt-auto text-xs font-extrabold text-slate-800 border-b-2 border-slate-800 hover:text-red-600 hover:border-red-600 transition uppercase">
+              <button className="text-xs font-extrabold text-slate-800 border-b-2 border-slate-800 hover:text-red-600 hover:border-red-600 transition uppercase">
                 Learn More
               </button>
             </div>
             {/* Card 2 (highlighted) */}
-            <div className="flex-1 bg-red-600 shadow-md p-8 flex flex-col items-start relative text-white border border-red-700">
+            <div
+              className="flex-1 bg-red-600 shadow-md p-8 flex flex-col justify-between h-full items-start relative text-white border border-red-700 min-h-[340px] md:min-h-[400px]"
+              data-aos="fade-left"
+              data-aos-delay="100"
+            >
               {/* Dekorasi sudut kanan atas */}
               <div
                 className="absolute top-0 right-0 w-8 h-3 bg-white"
@@ -339,25 +347,29 @@ const HomePage = () => {
                 className="absolute top-3 right-0 w-4 h-4 bg-red-600"
                 style={{ zIndex: 2 }}
               ></div>
-              <div className="w-12 h-12 flex items-center justify-center mb-4">
-                <span className="material-icons text-3xl text-white">
-                  engineering
-                </span>
+              <div>
+                <div className="w-12 h-12 flex items-center justify-center mb-4">
+                  <HardHat className="w-12 h-12 text-white" />
+                </div>
+                <h3 className="text-xl font-extrabold mb-2">
+                  Project Management
+                </h3>
+                <p className="text-white/90 text-sm mb-4 flex-1">
+                  We provide expert project management services to ensure every
+                  construction project is completed on time, within budget, and
+                  to the highest standards.
+                </p>
               </div>
-              <h3 className="text-xl font-extrabold mb-2">
-                Project Management
-              </h3>
-              <p className="text-white/90 text-sm mb-6">
-                We provide expert project management services to ensure every
-                construction project is completed on time, within budget, and to
-                the highest standards.
-              </p>
-              <button className="mt-auto text-xs font-extrabold text-white border-b-2 border-white hover:text-red-600 hover:border-red-600 transition uppercase">
+              <button className="text-xs font-extrabold text-white border-b-2 border-white hover:text-red-600 hover:border-red-600 transition uppercase">
                 Learn More
               </button>
             </div>
             {/* Card 3 */}
-            <div className="flex-1 bg-gray-50 shadow-md p-8 flex flex-col items-start relative border border-gray-100">
+            <div
+              className="flex-1 bg-gray-50 shadow-md p-8 flex flex-col justify-between h-full items-start relative border border-gray-100 min-h-[340px] md:min-h-[400px]"
+              data-aos="fade-right"
+              data-aos-delay="200"
+            >
               {/* Dekorasi sudut kanan atas */}
               <div
                 className="absolute top-0 right-0 w-8 h-3 bg-white"
@@ -367,20 +379,20 @@ const HomePage = () => {
                 className="absolute top-3 right-0 w-4 h-4 bg-gray-50"
                 style={{ zIndex: 2 }}
               ></div>
-              <div className="w-12 h-12 flex items-center justify-center mb-4">
-                <span className="material-icons text-3xl text-red-600">
-                  foundation
-                </span>
+              <div>
+                <div className="w-12 h-12 flex items-center justify-center mb-4">
+                  <Landmark className="w-12 h-12 text-red-600" />
+                </div>
+                <h3 className="text-xl font-extrabold text-slate-800 mb-2">
+                  Infrastructure Development
+                </h3>
+                <p className="text-gray-500 text-sm mb-4 flex-1">
+                  We offer comprehensive infrastructure development solutions,
+                  from roads and bridges to utilities, supporting sustainable
+                  growth.
+                </p>
               </div>
-              <h3 className="text-xl font-extrabold text-slate-800 mb-2">
-                Infrastructure Development
-              </h3>
-              <p className="text-gray-500 text-sm mb-6">
-                We offer comprehensive infrastructure development solutions,
-                from roads and bridges to utilities, supporting sustainable
-                growth.
-              </p>
-              <button className="mt-auto text-xs font-extrabold text-slate-800 border-b-2 border-slate-800 hover:text-red-600 hover:border-red-600 transition uppercase">
+              <button className="text-xs font-extrabold text-slate-800 border-b-2 border-slate-800 hover:text-red-600 hover:border-red-600 transition uppercase">
                 Learn More
               </button>
             </div>
