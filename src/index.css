@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+:root {
+  --nmj-college: #0f214d;
+  --nmj-persian: #0b5fb0;
+  --nmj-middle: #aaffff;
+  --nmj-yellowbanana: #fefdce;
+  --nmj-morning: #ffffff;
+  --nmj-picton: #2ba3ec;
+  --nmj-red: #e53935;
+}
+
 body {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
 }

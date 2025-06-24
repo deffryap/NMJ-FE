@@ -19,32 +19,32 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`w-full flex items-center justify-between bg-white  h-16 md:h-20 fixed top-0 left-0 z-50 transition-all duration-300 ${
+      className={`w-full flex items-center justify-between bg-[var(--nmj-college)] h-16 md:h-20 fixed top-0 left-0 z-50 transition-all duration-300 ${
         scrolled ? "shadow-lg border-b border-gray-200" : ""
       }`}
     >
       <div className="flex items-center px-4 md:px-8 h-full flex-shrink-0">
         <img
-          src="/logo.png"
+          src="/icon-logo.png"
           alt="Logo"
           className="h-8 md:h-10 w-auto object-contain"
         />
       </div>
       {/* Desktop Nav */}
-      <ul className="hidden md:flex items-center gap-4 text-base md:text-lg text-gray-700 pr-2">
-        <li className="text-black font-extrabold cursor-pointer">Home</li>
-        <li className="mx-2 text-gray-400 text-xl">·</li>
-        <li className="hover:text-black cursor-pointer">About</li>
-        <li className="mx-2 text-gray-400 text-xl">·</li>
-        <li className="hover:text-black cursor-pointer">Services</li>
-        <li className="mx-2 text-gray-400 text-xl">·</li>
-        <li className="hover:text-black cursor-pointer">Projects</li>
-        <li className="mx-2 text-gray-400 text-xl">·</li>
-        <li className="hover:text-black cursor-pointer">Contact</li>
+      <ul className="hidden md:flex items-center gap-4 text-base md:text-lg text-white pr-2">
+        <li className="text-white font-extrabold cursor-pointer">Beranda</li>
+        <li className="mx-2 text-white text-xl">·</li>
+        <li className="hover:text-white cursor-pointer">Tentang</li>
+        <li className="mx-2 text-white text-xl">·</li>
+        <li className="hover:text-white cursor-pointer">Layanan</li>
+        <li className="mx-2 text-white text-xl">·</li>
+        <li className="hover:text-white cursor-pointer">Proyek</li>
+        <li className="mx-2 text-white text-xl">·</li>
+        <li className="hover:text-white cursor-pointer">Kontak</li>
       </ul>
-      <div className="hidden md:flex bg-slate-800 px-6 items-center h-full">
+      <div className="hidden md:flex bg-[var(--nmj-red)] px-6 items-center h-full">
         <button className="text-white font-bold text-base">
-          Request A Quote
+          Minta Penawaran
         </button>
       </div>
       {/* Hamburger Button */}
@@ -70,41 +70,41 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="absolute top-full left-0 w-full bg-white/95 backdrop-blur-md shadow-md flex flex-col md:hidden animate-fade-in z-50 border-b">
-          <ul className="flex flex-col items-start gap-1 text-base text-gray-700 px-4 py-3">
+          <ul className="flex flex-col items-start gap-1 text-base text-white px-4 py-3">
             <li
-              className="text-black font-extrabold py-2 w-full cursor-pointer"
+              className="text-white font-extrabold py-2 w-full cursor-pointer"
               onClick={handleMenuClick}
             >
-              Home
+              Beranda
             </li>
             <li
-              className="hover:text-black cursor-pointer py-2 w-full"
+              className="hover:text-white cursor-pointer py-2 w-full"
               onClick={handleMenuClick}
             >
-              About
+              Tentang
             </li>
             <li
-              className="hover:text-black cursor-pointer py-2 w-full"
+              className="hover:text-white cursor-pointer py-2 w-full"
               onClick={handleMenuClick}
             >
-              Services
+              Layanan
             </li>
             <li
-              className="hover:text-black cursor-pointer py-2 w-full"
+              className="hover:text-white cursor-pointer py-2 w-full"
               onClick={handleMenuClick}
             >
-              Projects
+              Proyek
             </li>
             <li
-              className="hover:text-black cursor-pointer py-2 w-full"
+              className="hover:text-white cursor-pointer py-2 w-full"
               onClick={handleMenuClick}
             >
-              Contact
+              Kontak
             </li>
           </ul>
-          <div className="bg-slate-800 w-full px-4 py-3 flex items-center">
+          <div className="bg-[var(--nmj-red)] w-full px-4 py-3 flex items-center">
             <button className="text-white font-bold text-base w-full text-center py-2">
-              Request A Quote
+              Minta Penawaran
             </button>
           </div>
         </div>
