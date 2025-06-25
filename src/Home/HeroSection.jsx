@@ -74,8 +74,8 @@ const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex items-center h-full">
-        <div className="flex-1 z-20 pl-4 sm:pl-8 md:pl-12 lg:pl-16 xl:pl-20 py-6 sm:py-8 flex flex-col items-start text-left">
+      <div className="relative z-10 flex items-center h-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
+        <div className="flex-1 z-20 py-6 sm:py-8 flex flex-col items-start text-left">
           <h1
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-3 sm:mb-4 md:mb-6 drop-shadow-lg text-left"
             data-aos="fade-up"

@@ -132,11 +132,13 @@ function TestimonialSlider({ testimonials }) {
               transform: `translateX(-${(start * 100) / cardsPerView}%)`,
             }}
           >
-            {testimonials.map((t) => (
+            {testimonials.map((t, idx) => (
               <div
                 key={t.name}
                 className="flex-shrink-0 px-3 md:px-4 h-full"
                 style={{ width: `${100 / cardsPerView}%` }}
+                data-aos="fade-up"
+                data-aos-delay={200 + idx * 100}
               >
                 <div className="bg-[var(--nmj-morning)]  shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 p-8 relative group h-full flex flex-col">
                   {/* Decorative Element */}
@@ -226,10 +228,7 @@ function TestimonialSlider({ testimonials }) {
 
 const TestimonialSection = () => {
   return (
-    <section
-      className="w-full bg-[var(--nmj-college)] py-8 sm:py-10 md:py-11 px-4 sm:px-6 md:px-6 lg:px-8 flex flex-col items-center"
-      data-aos="fade-up"
-    >
+    <section className="w-full bg-[var(--nmj-college)] py-8 sm:py-10 md:py-11 px-4 sm:px-6 md:px-8 lg:px-10 flex flex-col items-center">
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center">
         <div className="mb-2 text-sm text-white font-semibold tracking-widest uppercase text-center">
           Testimoni

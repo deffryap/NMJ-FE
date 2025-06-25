@@ -152,7 +152,7 @@ const ServicesSection = () => {
 
   return (
     <section
-      className="w-full bg-[var(--nmj-college)] py-8 sm:py-12 md:py-16 px-4 sm:px-6 md:px-6 lg:px-8 flex flex-col items-center"
+      className="w-full bg-[var(--nmj-college)] py-8 sm:py-12 md:py-16 px-4 sm:px-6 md:px-8 lg:px-10 flex flex-col items-center"
       data-aos="fade-left"
     >
       <div className="w-full max-w-6xl mx-auto">
