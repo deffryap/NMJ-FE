@@ -36,7 +36,7 @@ const Navbar = () => {
             to="/"
             className={`cursor-pointer px-3 py-2 transition-all duration-200 uppercase font-medium tracking-wide ${
               location.pathname === "/"
-                ? "text-[var(--nmj-red)] border-b-4 border-[var(--nmj-red)] bg-white/90 shadow-sm"
+                ? "text-[var(--nmj-red)] border-b-4 border-[var(--nmj-red)] bg-white/20 shadow-sm"
                 : "text-white hover:text-[var(--nmj-red)] hover:bg-white/10"
             }`}
           >
@@ -49,7 +49,7 @@ const Navbar = () => {
             to="/about"
             className={`cursor-pointer px-3 py-2 transition-all duration-200 uppercase font-medium tracking-wide ${
               location.pathname === "/about"
-                ? "text-[var(--nmj-red)] border-b-4 border-[var(--nmj-red)] bg-white/90 shadow-sm"
+                ? "text-[var(--nmj-red)] border-b-4 border-[var(--nmj-red)] bg-white/20 shadow-sm"
                 : "text-white hover:text-[var(--nmj-red)] hover:bg-white/10"
             }`}
           >
@@ -57,34 +57,43 @@ const Navbar = () => {
           </Link>
         </li>
         <li className="mx-2 text-white text-xl">·</li>
-        <li
-          className={`cursor-pointer px-3 py-2 transition-all duration-200 uppercase font-medium tracking-wide ${
-            location.pathname === "/layanan"
-              ? "text-[var(--nmj-red)] border-b-4 border-[var(--nmj-red)] bg-white/90 shadow-sm"
-              : "text-white hover:text-[var(--nmj-red)] hover:bg-white/10"
-          }`}
-        >
-          Layanan
+        <li>
+          <Link
+            to="/services"
+            className={`cursor-pointer px-3 py-2 transition-all duration-200 uppercase font-medium tracking-wide ${
+              location.pathname === "/services"
+                ? "text-[var(--nmj-red)] border-b-4 border-[var(--nmj-red)] bg-white/20 shadow-sm"
+                : "text-white hover:text-[var(--nmj-red)] hover:bg-white/10"
+            }`}
+          >
+            Layanan
+          </Link>
         </li>
         <li className="mx-2 text-white text-xl">·</li>
-        <li
-          className={`cursor-pointer px-3 py-2 transition-all duration-200 uppercase font-medium tracking-wide ${
-            location.pathname === "/proyek"
-              ? "text-[var(--nmj-red)] border-b-4 border-[var(--nmj-red)] bg-white/90 shadow-sm"
-              : "text-white hover:text-[var(--nmj-red)] hover:bg-white/10"
-          }`}
-        >
-          Proyek
+        <li>
+          <Link
+            to="/projects"
+            className={`cursor-pointer px-3 py-2 transition-all duration-200 uppercase font-medium tracking-wide ${
+              location.pathname === "/projects"
+                ? "text-[var(--nmj-red)] border-b-4 border-[var(--nmj-red)] bg-white/20 shadow-sm"
+                : "text-white hover:text-[var(--nmj-red)] hover:bg-white/10"
+            }`}
+          >
+            Proyek
+          </Link>
         </li>
         <li className="mx-2 text-white text-xl">·</li>
-        <li
-          className={`cursor-pointer px-3 py-2 transition-all duration-200 uppercase font-medium tracking-wide ${
-            location.pathname === "/kontak"
-              ? "text-[var(--nmj-red)] border-b-4 border-[var(--nmj-red)] bg-white/90 shadow-sm"
-              : "text-white hover:text-[var(--nmj-red)] hover:bg-white/10"
-          }`}
-        >
-          Kontak
+        <li>
+          <Link
+            to="/contact"
+            className={`cursor-pointer px-3 py-2 transition-all duration-200 uppercase font-medium tracking-wide ${
+              location.pathname === "/contact"
+                ? "text-[var(--nmj-red)] border-b-4 border-[var(--nmj-red)] bg-white/20 shadow-sm"
+                : "text-white hover:text-[var(--nmj-red)] hover:bg-white/10"
+            }`}
+          >
+            Kontak
+          </Link>
         </li>
       </ul>
       <div className="hidden md:flex bg-[var(--nmj-red)] px-6 items-center h-full">
@@ -142,32 +151,41 @@ const Navbar = () => {
                 Tentang
               </Link>
             </li>
-            <li
+            <li>
+              <Link
+              to="/services"
               className={`py-2 w-full cursor-pointer font-medium uppercase tracking-wide transition-all duration-200 ${
-                location.pathname === "/layanan"
+                location.pathname === "/services"
                   ? "bg-[var(--nmj-red)] text-white border-l-4 border-[var(--nmj-red)] shadow-sm"
                   : "text-blue-950 hover:text-[var(--nmj-red)] hover:bg-white/10"
               }`}
             >
               Layanan
+              </Link>
             </li>
-            <li
-              className={`py-2 w-full cursor-pointer font-medium uppercase tracking-wide transition-all duration-200 ${
-                location.pathname === "/proyek"
-                  ? "bg-[var(--nmj-red)] text-white border-l-4 border-[var(--nmj-red)] shadow-sm"
-                  : "text-blue-950 hover:text-[var(--nmj-red)] hover:bg-white/10"
-              }`}
-            >
-              Proyek
+            <li>
+              <Link
+                to="/projects"
+                className={`py-2 w-full cursor-pointer font-medium uppercase tracking-wide transition-all duration-200 ${
+                  location.pathname === "/projects"
+                    ? "bg-[var(--nmj-red)] text-white border-l-4 border-[var(--nmj-red)] shadow-sm"
+                    : "text-blue-950 hover:text-[var(--nmj-red)] hover:bg-white/10"
+                }`}
+              >
+                Proyek
+              </Link>
             </li>
-            <li
-              className={`py-2 w-full cursor-pointer font-medium uppercase tracking-wide transition-all duration-200 ${
-                location.pathname === "/kontak"
-                  ? "bg-[var(--nmj-red)] text-white border-l-4 border-[var(--nmj-red)] shadow-sm"
-                  : "text-blue-950 hover:text-[var(--nmj-red)] hover:bg-white/10"
-              }`}
-            >
-              Kontak
+            <li>
+              <Link
+                to="/contact"
+                className={`py-2 w-full cursor-pointer font-medium uppercase tracking-wide transition-all duration-200 ${
+                  location.pathname === "/kontak"
+                    ? "bg-[var(--nmj-red)] text-white border-l-4 border-[var(--nmj-red)] shadow-sm"
+                    : "text-blue-950 hover:text-[var(--nmj-red)] hover:bg-white/10"
+                }`}
+              >
+                Kontak
+              </Link>
             </li>
           </ul>
           <div className="bg-[var(--nmj-red)] w-full px-4 py-3 flex items-center">

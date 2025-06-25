@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="w-3 h-3 bg-white ml-6" />
       </div>
       <div
-        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-6 lg:px-8 flex flex-col md:flex-row gap-10 md:gap-0 justify-between"
+        className="w-full px-4 sm:px-6 md:px-6 lg:px-8 flex flex-col md:flex-row gap-10 md:gap-0 justify-between"
         data-aos="fade-up"
         data-aos-delay="400"
       >
@@ -206,8 +206,6 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div
         className="mt-10 border-t border-white/10 bg-white/95 text-blue-950 text-xs flex flex-col md:flex-row items-center justify-between px-4 sm:px-6 md:px-6 lg:px-8 py-3 gap-2 md:gap-0 relative z-20"
-        data-aos="fade-in"
-        data-aos-delay="600"
       >
         <div className="mb-2 md:mb-0">
           Copyright © {new Date().getFullYear()} PT Naek Maju Jaya. Hak cipta
