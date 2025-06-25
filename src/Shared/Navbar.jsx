@@ -14,16 +14,13 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Menutup menu mobile saat klik link
-  const handleMenuClick = () => setMenuOpen(false);
-
   return (
     <nav
       className={`w-full flex items-center justify-between bg-[var(--nmj-college)] h-16 md:h-20 fixed top-0 left-0 z-50 transition-all duration-300 ${
         scrolled ? "shadow-lg border-b border-gray-200" : ""
       }`}
     >
-      <div className="flex items-center px-4 md:px-8 h-full flex-shrink-0">
+      <div className="flex items-center px-4 md:px-6 h-full flex-shrink-0">
         <img
           src="/icon-logo.png"
           alt="Logo"
@@ -54,7 +51,7 @@ const Navbar = () => {
         aria-label="Toggle menu"
       >
         <svg
-          className="w-8 h-8 text-slate-800"
+          className="w-8 h-8 text-white"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -70,35 +67,20 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="absolute top-full left-0 w-full bg-white/95 backdrop-blur-md shadow-md flex flex-col md:hidden animate-fade-in z-50 border-b">
-          <ul className="flex flex-col items-start gap-1 text-base text-white px-4 py-3">
-            <li
-              className="text-white font-extrabold py-2 w-full cursor-pointer"
-              onClick={handleMenuClick}
-            >
+          <ul className="flex flex-col items-start gap-1 text-base px-4 py-3">
+            <li className="font-extrabold text-[var(--nmj-red)] py-2 w-full cursor-pointer">
               Beranda
             </li>
-            <li
-              className="hover:text-white cursor-pointer py-2 w-full"
-              onClick={handleMenuClick}
-            >
+            <li className="py-2 w-full cursor-pointer text-blue-950 hover:text-[var(--nmj-red)]">
               Tentang
             </li>
-            <li
-              className="hover:text-white cursor-pointer py-2 w-full"
-              onClick={handleMenuClick}
-            >
+            <li className="py-2 w-full cursor-pointer text-blue-950 hover:text-[var(--nmj-red)]">
               Layanan
             </li>
-            <li
-              className="hover:text-white cursor-pointer py-2 w-full"
-              onClick={handleMenuClick}
-            >
+            <li className="py-2 w-full cursor-pointer text-blue-950 hover:text-[var(--nmj-red)]">
               Proyek
             </li>
-            <li
-              className="hover:text-white cursor-pointer py-2 w-full"
-              onClick={handleMenuClick}
-            >
+            <li className="py-2 w-full cursor-pointer text-blue-950 hover:text-[var(--nmj-red)]">
               Kontak
             </li>
           </ul>

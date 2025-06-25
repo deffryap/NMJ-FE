@@ -9,14 +9,15 @@ const Footer = () => {
         <div className="w-6 h-6 bg-[var(--nmj-college)]" />
         <div className="w-3 h-3 bg-white ml-6" />
       </div>
-      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row gap-10 md:gap-0 justify-between">
+      <div
+        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-6 lg:px-8 flex flex-col md:flex-row gap-10 md:gap-0 justify-between"
+        data-aos="fade-up"
+        data-aos-delay="400"
+      >
         {/* Kiri: Logo & Deskripsi */}
-        <div className="flex-1 min-w-[220px] flex flex-col gap-4">
+        <div className="flex-1 min-w-[220px] flex flex-col gap-4 mb-8 md:mb-0">
           <div className="flex items-center gap-2 mb-2">
-            <img src="/icon-logo.png" alt="NMJ Logo" className="h-8 w-auto" />
-            <span className="text-2xl font-bold text-white">
-              NMJ <span className="text-white">Link</span>
-            </span>
+            <img src="/icon-logo.png" alt="NMJ Logo" className="h-12 w-auto" />
           </div>
           <div className="text-white text-sm mb-2">
             Solusi konstruksi dengan berbagai layanan untuk industri dan
@@ -54,7 +55,7 @@ const Footer = () => {
           </div>
         </div>
         {/* Tengah: Menu */}
-        <div className="flex-[2] grid grid-cols-1 sm:grid-cols-3 gap-8">
+        <div className="flex-[2] grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-8 mb-8 md:mb-0">
           {/* Company */}
           <div>
             <div className="font-bold text-base mb-3 text-white">
@@ -203,7 +204,11 @@ const Footer = () => {
         </div>
       </div>
       {/* Bottom Bar */}
-      <div className="mt-10 border-t border-white/10 bg-white/95 text-blue-950 text-xs flex flex-col md:flex-row items-center justify-between px-6 py-3 relative z-20">
+      <div
+        className="mt-10 border-t border-white/10 bg-white/95 text-blue-950 text-xs flex flex-col md:flex-row items-center justify-between px-4 sm:px-6 md:px-6 lg:px-8 py-3 gap-2 md:gap-0 relative z-20"
+        data-aos="fade-in"
+        data-aos-delay="600"
+      >
         <div className="mb-2 md:mb-0">
           Copyright © {new Date().getFullYear()} PT Naek Maju Jaya. Hak cipta
           dilindungi undang-undang.
@@ -224,7 +229,7 @@ const Footer = () => {
         {/* Scroll to top */}
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="absolute right-6 bottom-3 bg-white text-[var(--nmj-red)] rounded-full w-8 h-8 flex items-center justify-center shadow-lg hover:bg-gray-100 transition"
+          className="absolute right-6 bottom-3 bg-white text-[var(--nmj-red)] w-8 h-8 flex items-center justify-center shadow-lg hover:bg-gray-100 transition"
           aria-label="Scroll to top"
         >
           <ArrowUp className="w-4 h-4" />

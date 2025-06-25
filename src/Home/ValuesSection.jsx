@@ -2,107 +2,86 @@ import React from "react";
 
 const ValuesSection = () => {
   return (
-    <section
-      className="w-full flex justify-center mt-30 items-stretch bg-[var(--nmj-college)] p-0 m-0 relative"
-      style={{ position: "relative" }}
-      data-aos="fade-left"
-    >
-      <div className="w-full max-w-9xl mx-auto h-[400px] sm:h-[450px] lg:h-[500px] min-h-0 relative lg:ml-[500px]">
-        {/* Blue background full width except for left margin */}
-
-        {/* Content: Values and Image */}
-        <div className="relative   pt-10 inset-0 left-0 bg-white w-full h-full z-0 flex flex-col lg:flex-row ">
-          {/* Values Content */}
-          <div className="flex flex-col justify-center text-gray-900 w-full lg:w-1/2 h-full min-h-0 px-6 sm:px-8 lg:px-10 py-8 sm:py-10 lg:py-12">
-            <div className="text-xs tracking-widest text-gray-900 mb-2">
-              NILAI
-            </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 sm:mb-8 leading-tight text-center lg:text-left text-gray-900">
-              Kami Percaya pada
-              <br />
-              Kualitas Ini
-            </h2>
-            <div className="flex flex-col gap-5 sm:gap-7">
-              <div className="flex items-start gap-3 sm:gap-4">
-                <span className="mt-1 w-2 h-2 sm:w-3 sm:h-3 bg-[var(--nmj-red)] rotate-45 inline-block flex-shrink-0" />
-                <div>
-                  <div className="font-bold text-sm sm:text-base mb-1 text-gray-900">
-                    Integritas
-                  </div>
-                  <div className="text-gray-900 text-xs sm:text-sm leading-relaxed">
-                    Kami menjunjung tinggi standar etika tertinggi dalam setiap
-                    proyek konstruksi, membangun kepercayaan dan transparansi
-                    dengan klien dan mitra.
-                  </div>
-                </div>
+    <section className="w-full bg-[var(--nmj-morning)] py-8 sm:py-12 md:py-16 flex flex-col lg:flex-row items-stretch relative">
+      {/* LEFT: Values Content */}
+      <div className="flex flex-col justify-center text-gray-900 w-full lg:w-1/2 h-full min-h-0 px-4 sm:px-6 md:px-6 lg:px-8 xl:px-10 py-6 sm:py-8 md:py-10 lg:py-12">
+        <div className="text-xs sm:text-sm tracking-widest text-gray-900 mb-2">
+          VALUES
+        </div>
+        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 md:mb-8 leading-tight text-center lg:text-left text-gray-900">
+          We Believe in
+          <br />
+          This Quality
+        </h2>
+        <div className="flex flex-col gap-4 sm:gap-5 md:gap-7">
+          <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
+            <span className="mt-1 w-2 h-2 sm:w-3 sm:h-3 bg-[var(--nmj-red)] rotate-45 inline-block flex-shrink-0" />
+            <div>
+              <div className="font-bold text-sm sm:text-base mb-1 text-gray-900">
+                Integrity
               </div>
-              <div className="flex items-start gap-3 sm:gap-4">
-                <span className="mt-1 w-2 h-2 sm:w-3 sm:h-3 bg-[var(--nmj-red)] rotate-45 inline-block flex-shrink-0" />
-                <div>
-                  <div className="font-bold text-sm sm:text-base mb-1 text-gray-900">
-                    Inovasi
-                  </div>
-                  <div className="text-gray-900 text-xs sm:text-sm leading-relaxed">
-                    Kami terus mencari dan menerapkan solusi konstruksi inovatif
-                    untuk mendorong efisiensi, keberlanjutan, dan kemajuan
-                    infrastruktur.
-                  </div>
-                </div>
-              </div>
-              <div className="flex items-start gap-3 sm:gap-4">
-                <span className="mt-1 w-2 h-2 sm:w-3 sm:h-3 bg-[var(--nmj-red)] rotate-45 inline-block flex-shrink-0" />
-                <div>
-                  <div className="font-bold text-sm sm:text-base mb-1 text-gray-900">
-                    Keamanan
-                  </div>
-                  <div className="text-gray-900 text-xs sm:text-sm leading-relaxed">
-                    Kami berkomitmen menjaga keselamatan pekerja, klien, dan
-                    lingkungan di setiap lokasi proyek.
-                  </div>
-                </div>
+              <div className="text-gray-900 text-xs sm:text-sm leading-relaxed">
+                We uphold the highest ethical standards in all our construction
+                projects, fostering trust and transparency with our clients and
+                partners.
               </div>
             </div>
           </div>
-          {/* Image, sits on top of blue bg with geometric layers, and overflows out of the section */}
-          <div className="h-full flex items-stretch justify-center relative overflow-visible lg:block">
-            <div className="relative w-[60%] h-[90%] mb-8 flex items-end">
-              <img
-                src="/gambar.png"
-                alt="Construction Site"
-                className="w-full h-full object-cover relative z-20"
-                style={{
-                  transform: "translate(30%, -8%)",
-                  boxShadow: "0 8px 32px 0 rgba(0,0,0,0.18)",
-                }}
-              />
+          <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
+            <span className="mt-1 w-2 h-2 sm:w-3 sm:h-3 bg-[var(--nmj-red)] rotate-45 inline-block flex-shrink-0" />
+            <div>
+              <div className="font-bold text-sm sm:text-base mb-1 text-gray-900">
+                Innovation
+              </div>
+              <div className="text-gray-900 text-xs sm:text-sm leading-relaxed">
+                We continuously seek and implement innovative construction
+                solutions to drive efficiency, sustainability, and progress in
+                building infrastructure.
+              </div>
+            </div>
+          </div>
+          <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
+            <span className="mt-1 w-2 h-2 sm:w-3 sm:h-3 bg-[var(--nmj-red)] rotate-45 inline-block flex-shrink-0" />
+            <div>
+              <div className="font-bold text-sm sm:text-base mb-1 text-gray-900">
+                Safety
+              </div>
+              <div className="text-gray-900 text-xs sm:text-sm leading-relaxed">
+                We are unwavering in our commitment to safeguarding the
+                well-being of our workers, clients, and the environment on every
+                construction site.
+              </div>
             </div>
           </div>
         </div>
       </div>
-      {/* Red Experience Box absolutely at bottom left, outside blue box */}
-      <div
-        className="absolute left-4 sm:left-8 lg:left-0 bottom-0 bg-[var(--nmj-red)] text-white px-6 sm:px-8 lg:px-10 py-6 sm:py-8"
-        style={{
-          minWidth: "280px",
-          minHeight: "100px",
-          zIndex: 30,
-          marginLeft: "220px",
-        }}
-      >
-        {/* Decorative squares */}
-        <div
-          className="absolute top-0 right-12 sm:right-16 w-6 h-2 sm:w-8 sm:h-3 bg-white"
-          style={{ zIndex: 2 }}
-        ></div>
-        <div
-          className="absolute top-2 sm:top-3 right-6 sm:right-8 w-3 h-3 sm:w-4 sm:h-4 bg-[var(--nmj-red)]"
-          style={{ zIndex: 2 }}
-        ></div>
-        <div className="text-4xl sm:text-5xl font-extrabold mb-2">15</div>
-        <div className="text-sm sm:text-base font-light leading-tight">
-          Tahun Pengalaman
-          <br />
-          di Industri Konstruksi
+
+      {/* RIGHT: Image & Stats */}
+      <div className="w-full lg:w-1/2 relative">
+        <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-full">
+          <div className="w-full h-full bg-[var(--nmj-college)] relative overflow-hidden">
+            <img
+              src="/gambar.png"
+              alt="Construction Values"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          {/* Decorative elements */}
+          <div className="absolute top-4 left-4 w-6 h-6 sm:w-8 sm:h-8 bg-white"></div>
+          <div className="absolute bottom-4 right-4 w-4 h-4 sm:w-6 sm:h-6 bg-[var(--nmj-red)]"></div>
+        </div>
+        {/* Stats overlay */}
+        <div className="absolute bottom-4 text-white sm:bottom-6 md:bottom-8 left-4 sm:left-6 md:left-8 bg-red-500 backdrop-blur-sm p-3 sm:p-4 md:p-6  shadow-lg">
+          <div className="text-center lg:text-left">
+            <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold mb-1 sm:mb-2">
+              15
+            </div>
+            <div className="text-xs sm:text-sm md:text-base font-light leading-tight">
+              Years of Construction
+              <br />
+              Industry Experience
+            </div>
+          </div>
         </div>
       </div>
     </section>

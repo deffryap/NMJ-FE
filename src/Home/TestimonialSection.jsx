@@ -227,7 +227,7 @@ function TestimonialSlider({ testimonials }) {
 const TestimonialSection = () => {
   return (
     <section
-      className="w-full bg-[var(--nmj-college)] py-11 px-4 sm:px-8 flex flex-col items-center"
+      className="w-full bg-[var(--nmj-college)] py-8 sm:py-10 md:py-11 px-4 sm:px-6 md:px-6 lg:px-8 flex flex-col items-center"
       data-aos="fade-up"
     >
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center">
