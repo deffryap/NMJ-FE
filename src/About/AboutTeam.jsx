@@ -4,7 +4,7 @@ const teamData = [
   {
     name: "Robert Smith",
     role: "CEO & Founder",
-    img: "/gambar.png",
+    img: "/team1.png",
     color: "white",
   },
   {

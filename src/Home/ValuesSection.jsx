@@ -94,7 +94,7 @@ const ValuesSection = () => {
             <div className="absolute bottom-4 right-4 w-4 h-4 sm:w-6 sm:h-6 bg-[var(--nmj-red)]"></div>
           </div>
           {/* Stats overlay */}
-          <div className="absolute bottom-4 text-white sm:bottom-6 md:bottom-8 left-4 sm:left-6 md:left-8 bg-red-500 backdrop-blur-sm p-3 sm:p-4 md:p-6  shadow-lg">
+          <div className="absolute bottom-4 text-white sm:bottom-6 md:bottom-8 left-4 sm:left-6 md:left-8 bg-[var(--nmj-red)] backdrop-blur-sm p-3 sm:p-4 md:p-6  shadow-lg">
             <div className="text-center lg:text-left">
               <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold mb-1 sm:mb-2">
                 15
