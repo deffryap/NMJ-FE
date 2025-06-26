@@ -15,6 +15,18 @@ const InfoItem = ({ icon, label, value }) => (
 const ProjectDetailContent = ({ project }) => {
   if (!project) return null;
 
+  // Ambil tahun selesai dari end_date, jika tidak ada pakai start_date
+  let year = "-";
+  if (project.end_date) {
+    year = new Date(project.end_date).getFullYear();
+  } else if (project.start_date) {
+    year = new Date(project.start_date).getFullYear();
+  }
+  // Jika ongoing, tampilkan "Ongoing"
+  if (project.is_ongoing) {
+    year = "Ongoing";
+  }
+
   return (
     <div className="bg-gray-50 w-full py-16 md:py-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -27,8 +39,8 @@ const ProjectDetailContent = ({ project }) => {
             </h2>
             <div className="space-y-6">
               <InfoItem icon={<MapPin size={20} className="text-[var(--nmj-red)]" />} label="Lokasi" value={project.location} />
-              <InfoItem icon={<Calendar size={20} className="text-[var(--nmj-red)]" />} label="Tahun Selesai" value={project.year} />
-              <InfoItem icon={<Layers size={20} className="text-[var(--nmj-red)]" />} label="Spesifikasi" value={project.stats} />
+              <InfoItem icon={<Calendar size={20} className="text-[var(--nmj-red)]" />} label="Tahun Selesai" value={year} />
+              <InfoItem icon={<Layers size={20} className="text-[var(--nmj-red)]" />} label="Kategori" value={project.construction_category} />
             </div>
           </div>
 
@@ -36,7 +48,7 @@ const ProjectDetailContent = ({ project }) => {
           <div className="lg:col-span-2">
             <div className="mb-8 shadow-2xl rounded-lg overflow-hidden">
               <img
-                src={project.image}
+                src={project.image_url || "/gambar.png"}
                 alt={project.title}
                 className="w-full h-auto object-cover"
               />

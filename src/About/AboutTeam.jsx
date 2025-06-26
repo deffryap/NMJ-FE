@@ -1,53 +1,47 @@
-import React, { useState } from "react";
-
-const teamData = [
-  {
-    name: "Robert Smith",
-    role: "CEO & Founder",
-    img: "/team1.png",
-    color: "white",
-  },
-  {
-    name: "Emily Lawson",
-    role: "Head of Finance",
-    img: "/gambar2.webp",
-    color: "red",
-  },
-  {
-    name: "Bob Martinez",
-    role: "Head of Operations",
-    img: "/gambar3.webp",
-    color: "white",
-  },
-  {
-    name: "Sarah Lee",
-    role: "Project Manager",
-    img: "/gambar2.webp",
-    color: "white",
-  },
-  { name: "John Doe", role: "Lead Engineer", img: "/gambar.png", color: "red" },
-  { name: "Anna Kim", role: "Architect", img: "/gambar3.webp", color: "white" },
-  {
-    name: "Michael Tan",
-    role: "Site Supervisor",
-    img: "/gambar2.webp",
-    color: "white",
-  },
-  { name: "Lisa Wong", role: "Procurement", img: "/gambar.png", color: "red" },
-];
+import React, { useState, useEffect } from "react";
+import { getTeams } from "../api/teamsApi";
 
 const AboutTeam = () => {
+  const [teamData, setTeamData] = useState([]);
   const [teamIndex, setTeamIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const teamVisible = 3;
+
+  useEffect(() => {
+    setLoading(true);
+    getTeams()
+      .then((res) => {
+        // Filter only active team members
+        const data = res.data.filter((member) => member.is_active);
+        setTeamData(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError("Gagal memuat data tim.");
+        setLoading(false);
+      });
+  }, []);
+
   const handleTeamPrev = () => {
     if (teamIndex === 0) setTeamIndex(teamData.length - teamVisible);
     else setTeamIndex((prev) => Math.max(prev - 1, 0));
   };
   const handleTeamNext = () => {
     if (teamIndex >= teamData.length - teamVisible) setTeamIndex(0);
-    else
-      setTeamIndex((prev) => Math.min(prev + 1, teamData.length - teamVisible));
+    else setTeamIndex((prev) => Math.min(prev + 1, teamData.length - teamVisible));
   };
+
+  if (loading) {
+    return <div className="text-center py-20">Memuat data tim...</div>;
+  }
+  if (error) {
+    return <div className="text-center py-20 text-red-600">{error}</div>;
+  }
+  if (!teamData.length) {
+    return <div className="text-center py-20">Tidak ada data tim yang aktif.</div>;
+  }
+
   return (
     <section className="w-full bg-[var(--nmj-morning)] py-16 px-0 border-b border-[var(--nmj-college)]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
@@ -71,7 +65,7 @@ const AboutTeam = () => {
               .slice(teamIndex, teamIndex + teamVisible)
               .map((member, idx) => (
                 <div
-                  key={member.name + idx}
+                  key={member.id}
                   className={`relative ${
                     member.color === "red"
                       ? "bg-[var(--nmj-red)] text-white border border-[var(--nmj-red)]"
@@ -82,7 +76,7 @@ const AboutTeam = () => {
                   data-aos-once="true"
                 >
                   <img
-                    src={member.img}
+                    src={member.image_url || "/team1.png"}
                     alt={member.name}
                     className={`w-full h-80 object-cover ${
                       member.color !== "red" ? "grayscale" : ""
@@ -97,7 +91,7 @@ const AboutTeam = () => {
                           : "text-[var(--nmj-persian)]"
                       }`}
                     >
-                      {member.role}
+                      {member.position}
                     </span>
                   </div>
                 </div>
