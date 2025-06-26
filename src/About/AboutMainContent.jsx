@@ -64,9 +64,9 @@ const AboutMainContent = () => (
               <span>{item.label}</span>
               <span>{item.value}%</span>
             </div>
-            <div className="w-full bg-[var(--nmj-morning)] h-2">
+            <div className="w-full bg-gray-300 rounded-full h-2">
               <div
-                className="h-2 bg-[var(--nmj-red)]"
+                className="bg-[var(--nmj-red)] h-2 rounded-full"
                 style={{ width: `${item.value}%` }}
               ></div>
             </div>

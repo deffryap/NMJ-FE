@@ -12,7 +12,7 @@ const WhatsAppCard = () => {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-0 z-50 bg-[var(--nmj-persian)] text-white px-4 py-3 rounded-l-full flex items-center shadow-lg hover:bg-green-600 transition-colors animate-pulse"
+      className="fixed bottom-6 right-0 z-50 bg-[var(--nmj-persian)] text-white px-4 py-3 rounded-l-full flex items-center shadow-lg animate-pulse hover:bg-green-600 transition-colors hover:animate-none"
     >
       <img
         src="/whatsapp.png" // Taruh file di /public
