@@ -38,7 +38,7 @@ const ContactForm = () => {
         <div>
           <button 
             type="submit" 
-            className="w-full flex items-center justify-center gap-2 bg-[var(--nmj-red)] text-white font-bold py-4 px-6 hover:brightness-110 transition-all transform hover:-translate-y-1"
+            className="w-full flex items-center justify-center gap-2 bg-[var(--nmj-red)] text-white font-bold py-4 px-6 hover:brightness-110 transition-all transform hover:-translate-y-1 cursor-pointer"
           >
             <Send size={18} />
             <span>KIRIM PESAN SEKARANG</span>

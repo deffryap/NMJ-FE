@@ -12,9 +12,13 @@ const AboutTeam = () => {
     setLoading(true);
     getTeams()
       .then((res) => {
-        // Filter only active team members
-        const data = res.data.filter((member) => member.is_active);
-        setTeamData(data);
+        if (res.data.success) {
+          // Filter only active team members from the data array
+          const data = res.data.data.filter((member) => member.is_active);
+          setTeamData(data);
+        } else {
+          setError("Gagal memuat data tim.");
+        }
         setLoading(false);
       })
       .catch((err) => {

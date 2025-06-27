@@ -1,5 +1,3 @@
-// src/Projects/ProjectsSection.jsx
-
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getProjects } from "../api/projectsApi";
@@ -13,9 +11,13 @@ const ProjectsSection = () => {
     setLoading(true);
     getProjects()
       .then((res) => {
-        // Filter only active projects
-        const data = res.data.filter((project) => project.is_active);
-        setProjects(data);
+        if (res.data.success) {
+          // Filter only active projects from the data array
+          const data = res.data.data.filter((project) => project.is_active);
+          setProjects(data);
+        } else {
+          setError("Gagal memuat data proyek.");
+        }
         setLoading(false);
       })
       .catch((err) => {

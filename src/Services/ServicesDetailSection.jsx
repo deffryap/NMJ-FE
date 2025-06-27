@@ -1,28 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { PlayCircle, ClipboardList, Building, HardHat, ArrowRight } from "lucide-react";
-import { getServices } from "../api/servicesApi";
-
-const iconMap = [ClipboardList, Building, HardHat];
+import React from "react";
+import { PlayCircle, ArrowDown } from "lucide-react";
 
 const ServicesDetailSection = () => {
-  const [services, setServices] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
-  useEffect(() => {
-    setLoading(true);
-    getServices()
-      .then((res) => {
-        // Filter only active services
-        const data = res.data.filter((service) => service.is_active);
-        setServices(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError("Gagal memuat data layanan.");
-        setLoading(false);
+  const scrollToServices = () => {
+    const servicesSection = document.getElementById('services-section');
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
       });
-  }, []);
+    }
+  };
 
   return (
     <section className="w-full bg-[var(--nmj-college)] py-16 md:py-24 px-4 sm:px-6 lg:px-8">
@@ -62,50 +51,16 @@ const ServicesDetailSection = () => {
             Dari perencanaan hingga serah terima, kami menyediakan keahlian dan
             sumber daya untuk mewujudkan visi proyek Anda menjadi kenyataan.
           </p>
-          {/* Daftar Layanan dengan Ikon */}
-          <div className="space-y-6 mb-10">
-            {loading ? (
-              <div className="text-white">Memuat layanan...</div>
-            ) : error ? (
-              <div className="text-red-400">{error}</div>
-            ) : !services.length ? (
-              <div className="text-white">Tidak ada layanan aktif.</div>
-            ) : (
-              services.map((service, index) => {
-                const Icon = iconMap[index % iconMap.length] || ClipboardList;
-                return (
-                  <div
-                    key={service.id}
-                    className="flex items-start gap-4"
-                    data-aos="fade-up"
-                    data-aos-delay={400 + index * 100}
-                  >
-                    <div className="flex-shrink-0 bg-[var(--nmj-red)] p-3 mt-1">
-                      <Icon className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-white mb-1">
-                        {service.title}
-                      </h3>
-                      <p className="text-white/70 text-sm leading-relaxed">
-                        {service.description}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })
-            )}
-          </div>
           {/* Tombol Aksi (CTA) yang Lebih Menonjol */}
-          <a
-            href="#services"
-            className="flex items-center justify-center gap-2 bg-[var(--nmj-red)] text-white font-bold px-8 py-3 w-max hover:brightness-110 transition-all shadow-lg transform hover:-translate-y-1"
+          <button
+            onClick={scrollToServices}
+            className="flex items-center justify-center gap-2 bg-[var(--nmj-red)] text-white font-bold px-8 py-3 w-max hover:brightness-110 transition-all shadow-lg transform hover:-translate-y-1 group cursor-pointer"
             data-aos="fade-up"
             data-aos-delay="700"
           >
             <span>LIHAT SEMUA LAYANAN</span>
-            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-          </a>
+            <ArrowDown className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+          </button>
         </div>
       </div>
     </section>

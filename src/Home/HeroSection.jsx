@@ -11,9 +11,13 @@ const HeroSection = () => {
     setLoading(true);
     getHeroSections()
       .then((res) => {
-        // Filter only active hero sections
-        const data = res.data.filter((item) => item.is_active);
-        setSlides(data);
+        if (res.data.success) {
+          // Filter only active hero sections from the data array
+          const data = res.data.data.filter((item) => item.is_active);
+          setSlides(data);
+        } else {
+          setError("Gagal memuat data hero section.");
+        }
         setLoading(false);
       })
       .catch((err) => {
@@ -84,7 +88,7 @@ const HeroSection = () => {
             data-aos-delay="200"
           >
             {slides[currentSlide].title} <br />
-            <span className="block">{slides[currentSlide].description}</span>
+            <span className="block font-normal text-lg">{slides[currentSlide].description}</span>
           </h1>
           <button
             className="bg-[var(--nmj-red)] text-white px-3 sm:px-4 md:px-6 py-2 sm:py-3 font-semibold mb-4 sm:mb-6 md:mb-8 shadow hover:bg-[var(--nmj-red)] transition self-start text-xs sm:text-sm md:text-base"

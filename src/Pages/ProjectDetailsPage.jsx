@@ -1,5 +1,3 @@
-// src/Pages/ProjectDetailsPage.jsx
-
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProjectById } from '../api/projectsApi';
@@ -18,7 +16,11 @@ const ProjectDetailsPage = () => {
     setLoading(true);
     getProjectById(id)
       .then((res) => {
-        setProject(res.data);
+        if (res.data.success) {
+          setProject(res.data.data);
+        } else {
+          setError('Proyek tidak ditemukan.');
+        }
         setLoading(false);
       })
       .catch((err) => {

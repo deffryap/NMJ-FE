@@ -25,8 +25,8 @@ const ContactInfo = () => {
       </p>
       <div className="space-y-8">
         <InfoItem icon={<Phone size={22} />} label="Hubungi Langsung">
-          <a href="tel:+628000000" className="hover:text-[var(--nmj-red)] transition-colors">
-            +628000000
+          <a href="tel:+62 888-7945-964" className="hover:text-[var(--nmj-red)] transition-colors">
+            +62 888-7945-964
           </a>
         </InfoItem>
         <InfoItem icon={<Mail size={22} />} label="Kirim Email">
@@ -35,7 +35,7 @@ const ContactInfo = () => {
           </a>
         </InfoItem>
         <InfoItem icon={<MapPin size={22} />} label="Kunjungi Kami" isLast={true}>
-          <p>Jl. Jenderal Sudirman Kav. 52-53, Jakarta Selatan, Indonesia</p>
+          <p>Merdeka Square, Jakarta, Jalan Lapangan Monas, Gambir, Central Jakarta City, Jakarta 10110</p>
         </InfoItem>
       </div>
     </div>
