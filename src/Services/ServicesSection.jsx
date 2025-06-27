@@ -12,11 +12,45 @@ import {
   Home,
   Factory,
 } from "lucide-react";
+import { getServices } from "../api/servicesApi";
 
 const ServicesSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  // --- UBAH: Ganti nama state agar lebih deskriptif ---
   const [itemsPerPage, setItemsPerPage] = useState(6);
+  const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Fetch services from API
+  useEffect(() => {
+    setLoading(true);
+    getServices()
+      .then((res) => {
+        if (res.data.success) {
+          // Filter only active services and map to component format
+          const data = res.data.data
+            .filter((service) => service.is_active)
+            .map((service, index) => ({
+              id: service.id,
+              title: service.name,
+              description: service.description,
+              icon: [Building, HardHat, Landmark, Wrench, Truck, Shield, Zap, Home, Factory][index % 9],
+              bgColor: index % 2 === 0 ? "bg-[var(--nmj-morning)]" : "bg-[var(--nmj-red)]",
+              textColor: index % 2 === 0 ? "text-[var(--nmj-red)]" : "text-white",
+              borderColor: index % 2 === 0 ? "border-gray-100" : "border-[var(--nmj-red)]",
+              iconColor: index % 2 === 0 ? "text-[var(--nmj-red)]" : "text-white",
+            }));
+          setServices(data);
+        } else {
+          setError("Gagal memuat data layanan.");
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError("Gagal memuat data layanan.");
+        setLoading(false);
+      });
+  }, []);
 
   // --- UBAH: Logika responsif untuk menentukan jumlah item per halaman (grid) ---
   useEffect(() => {
@@ -35,108 +69,6 @@ const ServicesSection = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const services = [
-    {
-      id: 1,
-      title: "Konstruksi Bangunan",
-      description:
-        "Kami ahli dalam membangun gedung berkualitas tinggi untuk kebutuhan komersial, residensial, dan industri dengan fokus pada keamanan dan daya tahan.",
-      icon: Building,
-      bgColor: "bg-[var(--nmj-morning)]",
-      textColor: "text-[var(--nmj-red)]",
-      borderColor: "border-gray-100",
-      iconColor: "text-[var(--nmj-red)]",
-    },
-    {
-      id: 2,
-      title: "Manajemen Proyek",
-      description:
-        "Kami menyediakan layanan manajemen proyek profesional untuk memastikan setiap proyek konstruksi selesai tepat waktu, sesuai anggaran, dan standar tertinggi.",
-      icon: HardHat,
-      bgColor: "bg-[var(--nmj-red)]",
-      textColor: "text-white",
-      borderColor: "border-[var(--nmj-red)]",
-      iconColor: "text-white",
-    },
-    {
-      id: 3,
-      title: "Pengembangan Infrastruktur",
-      description:
-        "Kami menawarkan solusi pengembangan infrastruktur menyeluruh, mulai dari jalan, jembatan, hingga utilitas, mendukung pertumbuhan berkelanjutan.",
-      icon: Landmark,
-      bgColor: "bg-[var(--nmj-morning)]",
-      textColor: "text-[var(--nmj-red)]",
-      borderColor: "border-gray-100",
-      iconColor: "text-[var(--nmj-red)]",
-    },
-    {
-      id: 4,
-      title: "Renovasi & Perbaikan",
-      description:
-        "Layanan renovasi dan perbaikan bangunan dengan standar tinggi, mengubah ruang lama menjadi area yang modern dan fungsional.",
-      icon: Wrench,
-      bgColor: "bg-[var(--nmj-morning)]",
-      textColor: "text-[var(--nmj-red)]",
-      borderColor: "border-gray-100",
-      iconColor: "text-[var(--nmj-red)]",
-    },
-    {
-      id: 5,
-      title: "Logistik & Transportasi",
-      description:
-        "Solusi logistik dan transportasi untuk material konstruksi dengan armada modern dan sistem tracking yang terintegrasi.",
-      icon: Truck,
-      bgColor: "bg-[var(--nmj-red)]",
-      textColor: "text-white",
-      borderColor: "border-[var(--nmj-red)]",
-      iconColor: "text-white",
-    },
-    {
-      id: 6,
-      title: "Keamanan & Keselamatan",
-      description:
-        "Implementasi sistem keamanan dan keselamatan kerja yang komprehensif untuk melindungi pekerja dan aset proyek.",
-      icon: Shield,
-      bgColor: "bg-[var(--nmj-morning)]",
-      textColor: "text-[var(--nmj-red)]",
-      borderColor: "border-gray-100",
-      iconColor: "text-[var(--nmj-red)]",
-    },
-    {
-      id: 7,
-      title: "Instalasi Listrik",
-      description:
-        "Layanan instalasi dan pemeliharaan sistem kelistrikan untuk bangunan komersial, industri, dan residensial.",
-      icon: Zap,
-      bgColor: "bg-[var(--nmj-red)]",
-      textColor: "text-white",
-      borderColor: "border-[var(--nmj-red)]",
-      iconColor: "text-white",
-    },
-    {
-      id: 8,
-      title: "Perumahan & Real Estate",
-      description:
-        "Pengembangan perumahan dan proyek real estate dengan desain modern dan kualitas konstruksi terbaik.",
-      icon: Home,
-      bgColor: "bg-[var(--nmj-morning)]",
-      textColor: "text-[var(--nmj-red)]",
-      borderColor: "border-gray-100",
-      iconColor: "text-[var(--nmj-red)]",
-    },
-    {
-      id: 9,
-      title: "Manajemen Pabrik",
-      description:
-        "Layanan manajemen dan pemeliharaan fasilitas pabrik dengan sistem yang efisien dan berkelanjutan.",
-      icon: Factory,
-      bgColor: "bg-[var(--nmj-red)]",
-      textColor: "text-white",
-      borderColor: "border-[var(--nmj-red)]",
-      iconColor: "text-white",
-    },
-  ];
-
   // --- Logika carousel tetap sama, tetapi sekarang didasarkan pada `itemsPerPage` ---
   const totalSlides = Math.ceil(services.length / itemsPerPage);
   const visibleServices = services.slice(
@@ -152,16 +84,24 @@ const ServicesSection = () => {
     setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
   };
 
+  if (loading) {
+    return <div className="text-center py-20 text-white">Memuat data layanan...</div>;
+  }
+  if (error) {
+    return <div className="text-center py-20 text-red-400">{error}</div>;
+  }
+  if (!services.length) {
+    return <div className="text-center py-20 text-white">Tidak ada data layanan yang aktif.</div>;
+  }
+
   return (
     <section
+      id="services-section"
       className="w-full bg-[var(--nmj-college)] py-8 sm:py-12 md:py-16 px-4 sm:px-6 md:px-8 lg:px-10 flex flex-col items-center"
       data-aos="fade-left"
     >
       <div className="w-full max-w-6xl mx-auto">
-        <div className="flex justify-between items-center mb-4 sm:mb-6 md:mb-8">
-          <div className="text-xs sm:text-sm text-white font-semibold tracking-widest uppercase">
-            LAYANAN
-          </div>
+        <div className="flex justify-end items-center mt-6 mb-4 sm:mb-6 md:mb-8">
           <div className="flex gap-1 sm:gap-2">
             <button
               onClick={prevSlide}
@@ -229,13 +169,17 @@ const ServicesSection = () => {
                     </p>
                   </div>
                   <button
-                    className={`text-xs font-extrabold ${
-                      service.textColor
-                    } border-b-2 ${
-                      service.textColor === "text-white"
-                        ? "border-white hover:text-[var(--nmj-red)] hover:border-[var(--nmj-red)]"
-                        : "border-[var(--nmj-red)] hover:text-white hover:border-white"
-                    } transition uppercase mt-auto`}
+                    className={`
+                      text-xs font-extrabold uppercase 
+                      py-1 px-2 mt-auto
+                      border-b-2 bg-transparent 
+                      transition-all duration-300 ease-in-out cursor-pointer
+                      ${
+                        service.textColor === "text-white"
+                          ? "text-white border-white hover:bg-white hover:text-[var(--nmj-red)] hover:border-transparent"
+                          : "text-[var(--nmj-red)] border-[var(--nmj-red)] hover:bg-[var(--nmj-red)] hover:text-white hover:border-transparent"
+                      }
+                    `}
                   >
                     Selengkapnya
                   </button>

@@ -1,8 +1,6 @@
-// src/Pages/ProjectDetailsPage.jsx
-
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { projects } from '../Projects/data/projects';
+import { getProjectById } from '../api/projectsApi';
 
 // Impor komponen Hero dan Content dari folder Projects/Details
 import ProjectDetailHero from '../Projects/Details/ProjectDetailHero';
@@ -11,21 +9,34 @@ import ProjectDetailContent from '../Projects/Details/ProjectDetailContent';
 const ProjectDetailsPage = () => {
   const { id } = useParams();
   const [project, setProject] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Cari proyek yang cocok di dalam data
-    const foundProject = projects.find(p => p.id === parseInt(id));
-    setProject(foundProject);
-
-    // Selalu scroll ke atas saat halaman dibuka
+    setLoading(true);
+    getProjectById(id)
+      .then((res) => {
+        if (res.data.success) {
+          setProject(res.data.data);
+        } else {
+          setError('Proyek tidak ditemukan.');
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError('Proyek tidak ditemukan.');
+        setLoading(false);
+      });
     window.scrollTo(0, 0);
   }, [id]);
 
-  // Jika data belum ditemukan (atau id tidak valid)
-  if (!project) {
+  if (loading) {
+    return <div className="text-center py-20">Memuat detail proyek...</div>;
+  }
+  if (error || !project) {
     return (
       <div className="text-center py-20">
-        <h1 className="text-2xl font-bold">Proyek tidak ditemukan.</h1>
+        <h1 className="text-2xl font-bold">{error || 'Proyek tidak ditemukan.'}</h1>
       </div>
     );
   }

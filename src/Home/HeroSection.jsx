@@ -1,41 +1,37 @@
 import React, { useState, useEffect } from "react";
+import { getHeroSections } from "../api/heroSectionsApi";
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [slides, setSlides] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const slides = [
-    {
-      id: 1,
-      image: "/gambar.png",
-      title: "Penghubung Menuju",
-      subtitle: "Keunggulan Konstruksi",
-      description:
-        "Kami adalah penghubung utama menuju keunggulan di sektor konstruksi, mendorong kemajuan dan membangun infrastruktur berkelanjutan untuk masa depan.",
-    },
-    {
-      id: 2,
-      image: "/gambar2.webp",
-      title: "Solusi Konstruksi",
-      subtitle: "Terpercaya & Berkualitas",
-      description:
-        "Memberikan solusi konstruksi terbaik dengan standar kualitas tinggi dan keamanan yang terjamin untuk setiap proyek.",
-    },
-    {
-      id: 3,
-      image: "/gambar3.webp",
-      title: "Inovasi & Teknologi",
-      subtitle: "Membangun Masa Depan",
-      description:
-        "Menggunakan teknologi terkini dan inovasi dalam setiap proyek konstruksi untuk menciptakan infrastruktur masa depan.",
-    },
-  ];
+  useEffect(() => {
+    setLoading(true);
+    getHeroSections()
+      .then((res) => {
+        if (res.data.success) {
+          // Filter only active hero sections from the data array
+          const data = res.data.data.filter((item) => item.is_active);
+          setSlides(data);
+        } else {
+          setError("Gagal memuat data hero section.");
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError("Gagal memuat data hero section.");
+        setLoading(false);
+      });
+  }, []);
 
   // Auto slide effect
   useEffect(() => {
+    if (!slides.length) return;
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000); // Change slide every 5 seconds
-
+    }, 5000);
     return () => clearInterval(interval);
   }, [slides.length]);
 
@@ -51,6 +47,16 @@ const HeroSection = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
+  if (loading) {
+    return <div className="text-center py-20 text-white">Memuat hero section...</div>;
+  }
+  if (error) {
+    return <div className="text-center py-20 text-red-400">{error}</div>;
+  }
+  if (!slides.length) {
+    return <div className="text-center py-20 text-white">Tidak ada data hero section aktif.</div>;
+  }
+
   return (
     <section className="relative w-full h-[60vh] md:h-screen overflow-hidden bg-[var(--nmj-college)]">
       {/* Background Images */}
@@ -63,7 +69,7 @@ const HeroSection = () => {
             }`}
           >
             <img
-              src={slide.image}
+              src={slide.image_url || "/gambar.png"}
               alt={`Slide ${index + 1}`}
               className="w-full h-full object-cover"
             />
@@ -81,15 +87,9 @@ const HeroSection = () => {
             data-aos="fade-up"
             data-aos-delay="200"
           >
-            {slides[currentSlide].title} <br /> {slides[currentSlide].subtitle}
+            {slides[currentSlide].title} <br />
+            <span className="block font-normal text-lg">{slides[currentSlide].description}</span>
           </h1>
-          <p
-            className="text-sm sm:text-base md:text-lg text-white mb-4 sm:mb-6 md:mb-8 max-w-lg drop-shadow-lg text-left"
-            data-aos="fade-right"
-            data-aos-delay="400"
-          >
-            {slides[currentSlide].description}
-          </p>
           <button
             className="bg-[var(--nmj-red)] text-white px-3 sm:px-4 md:px-6 py-2 sm:py-3 font-semibold mb-4 sm:mb-6 md:mb-8 shadow hover:bg-[var(--nmj-red)] transition self-start text-xs sm:text-sm md:text-base"
             data-aos="fade-up"

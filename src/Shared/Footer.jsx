@@ -227,7 +227,7 @@ const Footer = () => {
         {/* Scroll to top */}
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="absolute right-6 bottom-3 bg-white text-[var(--nmj-red)] w-8 h-8 flex items-center justify-center shadow-lg hover:bg-gray-100 transition"
+          className="absolute right-6 bottom-3 bg-white text-[var(--nmj-red)] w-8 h-8 flex items-center justify-center shadow-lg hover:bg-gray-100 transition cursor-pointer"
           aria-label="Scroll to top"
         >
           <ArrowUp className="w-4 h-4" />

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ServicesHero = () => (
   <section
@@ -17,7 +18,7 @@ const ServicesHero = () => (
           data-aos="fade-up"
           data-aos-delay="100"
         >
-          <span>Home</span>
+          <Link to="/" className="hover:text-white">Home</Link>
           <span className="text-white">/</span>
           <span className="text-white">Layanan</span>
         </div>
